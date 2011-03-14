@@ -4,9 +4,26 @@
 
 #define MAX_LEN     9
 
+int valid_factoradic(const char *fac)
+{
+    int d;
+    const char *p;
+
+    d = 0;
+    p = fac + strlen(fac) - 1;
+
+    for (d = 0, p = fac + strlen(fac) - 1; p >= fac; d++, p--) {
+        if ((*p - '0') > d) {
+            return 0;
+        }
+    }
+
+    return 1;
+}
+
 int fac2ten(const char *fac)
 {
-    int n, f, len, first;
+    int n, f, len;
     const char *p;
 
     len = strlen(fac);
@@ -16,17 +33,11 @@ int fac2ten(const char *fac)
 
     n = 0;
     f = 1;
-    first = 1;
-    p = fac + len - 1;
+    p = fac + len - 2;
 
     while (p >= fac) {
-        if (first) {
-            first = 0;
-        }
-        else {
-            n += (*p - '0') * f;
-            f *= (f + 1);
-        }
+        n += (*p - '0') * f;
+        f *= (f + 1);
         --p;
     }
 
