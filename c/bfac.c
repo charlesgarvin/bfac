@@ -55,11 +55,8 @@ static int ten2fac_r(int n, int f, char *fac)
 
     n = ten2fac_r(n, f * (f + 1), fac);
 
-    d = 0;
-    while (n >= f) {
-        n -= f;
-        d++;
-    }
+    d = n / f;
+    n %= f;
 
     sprintf(s, "%d", d);
     strcat(fac, s);
