@@ -1,14 +1,17 @@
-#!/usr/bin/env python26
+# requires python2.6 due to use of factorial function
 
 from math import factorial
 
-def baseTenToFac(bten):
+def valid_factoradic(number):
+	return True
+
+def ten2fac(bten):
 	"""
 	Convert a number from base ten to base factorial.
 
 	The result is an actual integer, no subscript attached.
 	
-	>>> [baseTenToFac(n) for n in range(24)]
+	>>> [ten2fac(n) for n in range(24)]
 	[0, 10, 100, 110, 200, 210, 1000, 1010, 1100, 1110, 1200, 1210, 2000, 2010, 2100, 2110, 2200, 2210, 3000, 3010, 3100, 3110, 3200, 3210]
 	"""
 
@@ -38,22 +41,19 @@ def baseTenToFac(bten):
 
 	return int(num)
 
-def validFactorial(number):
-	return true
-
-def baseFacToTen(bfac):
+def fac2ten(bfac):
 	"""
 	Convert a number from base factorial to base ten.
 
-	>>> [baseFacToTen(n) for n in 0, 10, 100, 110, 200, 210, 1000, 1010, 1100, 1110, 1200, 1210, 2000, 2010, 2100, 2110, 2200, 2210, 3000, 3010, 3100, 3110, 3200, 3210]
+	>>> [fac2ten(n) for n in 0, 10, 100, 110, 200, 210, 1000, 1010, 1100, 1110, 1200, 1210, 2000, 2010, 2100, 2110, 2200, 2210, 3000, 3010, 3100, 3110, 3200, 3210]
 	[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
 	"""
 
-	if not validFactorial(bfac):
+	if not valid_factoradic(bfac):
 		error = 'The number ' + str(bfac) + ' is not a valid factorial number'
-		raise TypeError(
+		raise TypeError(error)
 
-	nu  = 0
+	num  = 0
 
 	f = str(bfac)
 
@@ -68,10 +68,3 @@ def baseFacToTen(bfac):
 		pos = pos + 1
 
 	return num
-
-if __name__ == '__main__':
-	#import sys
-	#print baseTenToFac(int(sys.argv[1]))
-	#print baseFacToTen(int(sys.argv[1]))
-	import doctest
-	doctest.testmod()
