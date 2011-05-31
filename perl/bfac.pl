@@ -3,7 +3,14 @@ sub valid_factoradic
     my $f = shift(@_);
     my $max = substr(reverse(join('', (0..9))), -length($f));
 
-    return ($f <= $max);
+    while (($m = chop($max)) ne "") {
+        $d = chop($f);
+        if ($m < $d) {
+            return 0;
+        }
+    }
+
+    return 1;
 }
 
 sub fac2ten
